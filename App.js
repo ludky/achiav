@@ -1,11 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet} from 'react-native';
+import Home from "./components/HomeComponent";
+import {createDrawerNavigator} from "react-navigation-drawer";
+import {createAppContainer} from "react-navigation";
+import Rewards from "./components/RewardsComponent";
+
+const MainNavigator = createDrawerNavigator({
+  Home: Home,
+  Rewards: Rewards
+});
+
+const AppContainer = createAppContainer(MainNavigator);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+      <AppContainer />
   );
 }
 
