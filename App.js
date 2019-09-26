@@ -1,12 +1,24 @@
 import React from 'react';
-import {createStackNavigator} from "react-navigation-stack";
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from "react-navigation";
+import Profile from "./components/ProfileComponent";
+import Social from "./components/SocialComponent";
+import Quests from "./components/QuestsComponent";
 import Rewards from "./components/RewardsComponent";
 
-const MainNavigator = createStackNavigator(
+const MainNavigator = createBottomTabNavigator(
     {
-      Rewards: Rewards
-      },
+        Rewards: Rewards,
+        Quests: {
+            screen: Quests
+        },
+        Social: {
+            screen: Social
+        },
+        Profile: {
+            screen: Profile
+        }
+    },
     {
       defaultNavigationOptions: {
         headerStyle: {
