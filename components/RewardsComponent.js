@@ -1,19 +1,26 @@
 import React, {Component} from 'react';
 import {FlatList, SafeAreaView} from 'react-native';
-import {REWARDS} from "../shared/rewards";
 import {ListItem} from "react-native-elements";
+import {connect} from "react-redux";
+import { fetchRewards } from "../redux/ActionCreators";
+
+
+const mapDispatchToProps = dispatch => ({
+    fetchRewards: () => dispatch(fetchRewards())
+});
 
 class Rewards extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            rewards: REWARDS,
-        }
     }
 
     static navigationOptions = {
       title: 'Rewards'
     };
+
+    componentDidMount() {
+        this.props.fetchRewards()
+    }
 
     render() {
         const renderRewardItem = ({item, index}) => {
@@ -31,7 +38,7 @@ class Rewards extends Component {
         return (
             <SafeAreaView>
                 <FlatList
-                    data={this.state.rewards}
+                    data={this.props.rewards}
                     renderItem={renderRewardItem}
                     keyExtractor={item => item.id.toString()}
                 />
@@ -40,4 +47,10 @@ class Rewards extends Component {
     }
 }
 
-export default Rewards;
+const mapStateToProps = (state) => {
+    return {
+        rewards: state.rewards
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Rewards);

@@ -10,3 +10,6 @@ npm-debug.*
 web-build/
 web-report/
 .idea/*
+
+# Project environment configuration files
+environment.js

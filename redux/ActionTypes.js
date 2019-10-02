@@ -1,0 +1,1 @@
+export const RECEIVE_REWARDS = 'RECEIVE_REWARDS';

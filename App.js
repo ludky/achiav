@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from "react-navigation";
 import Profile from "./components/ProfileComponent";
@@ -6,6 +6,10 @@ import Social from "./components/SocialComponent";
 import Quests from "./components/QuestsComponent";
 import Rewards from "./components/RewardsComponent";
 import {Icon} from "react-native-elements";
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { rewards } from './redux/rewards.js'
 
 const MainNavigator = createBottomTabNavigator(
     {
@@ -47,10 +51,17 @@ const MainNavigator = createBottomTabNavigator(
       }
   });
 
+const store = createStore(rewards, applyMiddleware(thunkMiddleware));
+
 const AppContainer = createAppContainer(MainNavigator);
 
-export default function App() {
-  return (
-      <AppContainer />
-  );
+export default class App extends Component {
+    render() {
+        return (
+            <Provider store={ store }>
+                <AppContainer />
+            </Provider>
+
+        );
+    }
 }
