@@ -15,9 +15,8 @@ const MainNavigator = createBottomTabNavigator(
     {
         Rewards: {
             screen: Rewards,
-            headerTitle: 'Test',
             navigationOptions: {
-                tabBarIcon: <Icon name='star' type='font-awesome' color='gold'/>
+                tabBarIcon: <Icon name='star' type='font-awesome' color='black'/>
             }
         },
         Quests: {

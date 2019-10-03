@@ -3,6 +3,7 @@ import {FlatList, SafeAreaView} from 'react-native';
 import {ListItem} from "react-native-elements";
 import {connect} from "react-redux";
 import { fetchRewards } from "../redux/ActionCreators";
+import Header from './HeaderComponent';
 
 
 const mapDispatchToProps = dispatch => ({
@@ -37,6 +38,7 @@ class Rewards extends Component {
 
         return (
             <SafeAreaView>
+                <Header title='Rewards'></Header>
                 <FlatList
                     data={this.props.rewards}
                     renderItem={renderRewardItem}
