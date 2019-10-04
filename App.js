@@ -6,10 +6,11 @@ import Social from "./components/SocialComponent";
 import Quests from "./components/QuestsComponent";
 import Rewards from "./components/RewardsComponent";
 import {Icon} from "react-native-elements";
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { rewards } from './redux/rewards.js'
+import { rewards } from './redux/rewards.js';
+import { friends } from './redux/friends.js';
 
 const MainNavigator = createBottomTabNavigator(
     {
@@ -50,7 +51,9 @@ const MainNavigator = createBottomTabNavigator(
       }
   });
 
-const store = createStore(rewards, applyMiddleware(thunkMiddleware));
+const rootReducer = combineReducers({friends: friends, rewards: rewards});
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 const AppContainer = createAppContainer(MainNavigator);
 

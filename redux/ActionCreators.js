@@ -1,5 +1,7 @@
 import getEnvVars from '../environment';
-import {RECEIVE_REWARDS} from "./ActionTypes";
+import {RECEIVE_REWARDS, RECEIVE_FRIENDS} from "./ActionTypes";
+import { REWARDS } from '../shared/rewards';
+import { FRIENDS } from '../shared/friends';
 
 const { apiUrl } = getEnvVars();
 const { apiKey } = getEnvVars();
@@ -21,7 +23,21 @@ export const fetchRewards = () => {
             .then(response => response.json())
             .then(json => dispatch(receiveRewards(json)))
             .catch(err => {
-                console.log(err)
-            });
+                console.log(err);
+                return REWARDS;               
+            })
     }
 };
+
+function receiveFriends(json) {
+    return {
+        type: RECEIVE_FRIENDS,
+        friends: json.friends
+    };
+}
+
+export const fetchFriends = () => {
+    return dispatch => {
+        dispatch(receiveFriends(FRIENDS));
+    };
+}

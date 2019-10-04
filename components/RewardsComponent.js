@@ -51,7 +51,7 @@ class Rewards extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        rewards: state.rewards
+        rewards: state.rewards.rewards
     }
 };
 
