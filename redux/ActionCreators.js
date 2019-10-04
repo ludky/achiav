@@ -1,5 +1,10 @@
 import getEnvVars from '../environment';
-import {RECEIVE_REWARDS} from "./ActionTypes";
+import {RECEIVE_REWARDS, RECEIVE_FRIENDS} from "./ActionTypes";
+import { FRIENDS } from '../shared/friends';
+
+/**
+ * This class contains all Redux actions that occur as a result of  
+ */
 
 const { apiUrl } = getEnvVars();
 const { apiKey } = getEnvVars();
@@ -11,17 +16,32 @@ function receiveRewards(json) {
     }
 }
 export const fetchRewards = () => {
-    return dispatch => {
-        return fetch(apiUrl, {    
-            method: 'get',
-            headers: new Headers({
-                'x-api-key': apiKey
-            })
-            })
-            .then(response => response.json())
-            .then(json => dispatch(receiveRewards(json)))
-            .catch(err => {
-                console.log(err)
+    return async dispatch => {
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'get',
+                headers: new Headers({
+                    'x-api-key': apiKey
+                })
             });
+            const json = await response.json();
+            return dispatch(receiveRewards(json));
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 };
+
+function receiveFriends(json) {
+    return {
+        type: RECEIVE_FRIENDS,
+        friends: json.friends
+    };
+}
+
+export const fetchFriends = () => {
+    return dispatch => {
+        dispatch(receiveFriends(FRIENDS));
+    };
+}

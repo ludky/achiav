@@ -1,17 +1,21 @@
 import React, {Component} from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from "react-navigation";
-import Profile from "./components/ProfileComponent";
 import Social from "./components/SocialComponent";
 import Quests from "./components/QuestsComponent";
 import Rewards from "./components/RewardsComponent";
+import Profile from './components/ProfileComponent';
 import {Icon} from "react-native-elements";
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { rewards } from './redux/rewards.js'
+import { rewards } from './redux/rewards.js';
+import { friends } from './redux/friends.js';
+import Amplify, { Hub } from 'aws-amplify';
+import { withAuthenticator } from 'aws-amplify-react-native';
+import getEnvVars from './environment';
 
-const MainNavigator = createBottomTabNavigator(
+const TabNavigator = createBottomTabNavigator(
     {
         Rewards: {
             screen: Rewards,
@@ -50,11 +54,29 @@ const MainNavigator = createBottomTabNavigator(
       }
   });
 
-const store = createStore(rewards, applyMiddleware(thunkMiddleware));
+const rootReducer = combineReducers({friends: friends, rewards: rewards});
 
-const AppContainer = createAppContainer(MainNavigator);
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-export default class App extends Component {
+const AppContainer = createAppContainer(TabNavigator);
+
+const { awsConfig } = getEnvVars();
+Amplify.configure(awsConfig);
+
+class App extends Component {
+    
+    componentDidMount() {
+        Hub.listen('auth', (authData) => {
+          if (authData.payload.event === 'signOut') {
+            this.props.onStateChange('signedOut', null);
+          }
+        })
+      }
+
+    constructor(props) {
+        super(props);        
+    }
+
     render() {
         return (
             <Provider store={ store }>
@@ -64,3 +86,5 @@ export default class App extends Component {
         );
     }
 }
+
+export default withAuthenticator(App);

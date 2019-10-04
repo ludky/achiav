@@ -1,5 +1,9 @@
 import * as ActionTypes from './ActionTypes';
 
+/**
+ *  Reducer function for managing the state of rewards data in the Redux store
+ */
+
 const initialState = {
     rewards: []
 };
