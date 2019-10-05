@@ -2572,6 +2572,13 @@ expect@^24.9.0:
     jest-message-util "^24.9.0"
     jest-regex-util "^24.9.0"
 
+expo-app-auth@~7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/expo-app-auth/-/expo-app-auth-7.0.0.tgz#6d75dd561ba12a6b039a76cdc8dc519c69a715d1"
+  integrity sha512-j5lSTm0uFcqSye8YJYB7bwBAS1VWYh1BcZc9NZPKn9hMz+RKdqJChB0Vx51mu07dDyD3eaV4U2Um7pKihAAatg==
+  dependencies:
+    invariant "^2.2.4"
+
 expo-app-loader-provider@~7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/expo-app-loader-provider/-/expo-app-loader-provider-7.0.0.tgz#9bfff831a204d0a8896e0120bce2209c4304ef03"
@@ -2606,6 +2613,14 @@ expo-font@~7.0.0:
   integrity sha512-OVlUydfexjq1u57Xlymcx5egfFF2WZ5MXkg3GGjHyiSMfp09inZ7OzAu+O/TXjxjlaq9d6vBXiwVxqQoUIlx1Q==
   dependencies:
     fontfaceobserver "^2.1.0"
+
+expo-google-app-auth@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/expo-google-app-auth/-/expo-google-app-auth-7.0.0.tgz#66d772339a2a61cdfb256f4094fa693eda02951b"
+  integrity sha512-sVVl5yYrKD0FTGpvxCo4M1xCLgdDGtAYostsavzZjRAui0GpmA96iS7jMePltSWpffg4r7dIjRZEUbLjQ03g6g==
+  dependencies:
+    expo-app-auth "~7.0.0"
+    expo-constants "~7.0.0"
 
 expo-keep-awake@~7.0.0:
   version "7.0.0"
@@ -5645,6 +5660,14 @@ react-dom@16.8.3:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.3"
+
+react-google-login@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-5.0.5.tgz#b327a0ef1d6f466088c1a29dea0a6c29978158dc"
+  integrity sha512-MiX8ftDY8fqJbMNBsLWUtj3i65Z96MIB4dOYtZcxyqjOp7vkgeL/vsUdu/L0BgNNra2m4zyUD01dITH/19t1uA==
+  dependencies:
+    "@types/react" "*"
+    prop-types "^15.6.0"
 
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:
   version "16.9.0"

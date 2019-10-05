@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createSwitchNavigator } from 'react-navigation'
 import {createAppContainer} from "react-navigation";
-import Profile from "./components/ProfileComponent";
+import Login from "./components/LoginComponent";
 import Social from "./components/SocialComponent";
 import Quests from "./components/QuestsComponent";
 import Rewards from "./components/RewardsComponent";
+import Profile from './components/ProfileComponent';
 import {Icon} from "react-native-elements";
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
@@ -12,7 +14,7 @@ import { Provider } from 'react-redux';
 import { rewards } from './redux/rewards.js';
 import { friends } from './redux/friends.js';
 
-const MainNavigator = createBottomTabNavigator(
+const TabNavigator = createBottomTabNavigator(
     {
         Rewards: {
             screen: Rewards,
@@ -50,6 +52,14 @@ const MainNavigator = createBottomTabNavigator(
         }
       }
   });
+const MainNavigator = createSwitchNavigator({
+    Login: Login,
+    App: TabNavigator,
+    },
+    {
+        initialRouteName: 'Login'
+    }
+);
 
 const rootReducer = combineReducers({friends: friends, rewards: rewards});
 
