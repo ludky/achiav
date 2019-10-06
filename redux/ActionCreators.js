@@ -1,6 +1,5 @@
 import getEnvVars from '../environment';
 import {RECEIVE_REWARDS, RECEIVE_FRIENDS} from "./ActionTypes";
-import { REWARDS } from '../shared/rewards';
 import { FRIENDS } from '../shared/friends';
 
 const { apiUrl } = getEnvVars();

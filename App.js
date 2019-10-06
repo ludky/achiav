@@ -13,6 +13,12 @@ import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { rewards } from './redux/rewards.js';
 import { friends } from './redux/friends.js';
+import Amplify, { Hub } from 'aws-amplify';
+import awsConfig from './awsExports.js';
+
+Amplify.configure(awsConfig);
+
+import { withAuthenticator } from 'aws-amplify-react-native';
 
 const TabNavigator = createBottomTabNavigator(
     {
@@ -65,9 +71,22 @@ const rootReducer = combineReducers({friends: friends, rewards: rewards});
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-const AppContainer = createAppContainer(MainNavigator);
+const AppContainer = createAppContainer(TabNavigator    );
 
-export default class App extends Component {
+class App extends Component {
+    
+    componentDidMount() {
+        Hub.listen('auth', (authData) => {
+          if (authData.payload.event === 'signOut') {
+            this.props.onStateChange('signedOut', null);
+          }
+        })
+      }
+
+    constructor(props) {
+        super(props);        
+    }
+
     render() {
         return (
             <Provider store={ store }>
@@ -77,3 +96,5 @@ export default class App extends Component {
         );
     }
 }
+
+export default withAuthenticator(App);
