@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createSwitchNavigator } from 'react-navigation'
 import {createAppContainer} from "react-navigation";
-import Login from "./components/LoginComponent";
 import Social from "./components/SocialComponent";
 import Quests from "./components/QuestsComponent";
 import Rewards from "./components/RewardsComponent";
@@ -15,9 +13,6 @@ import { rewards } from './redux/rewards.js';
 import { friends } from './redux/friends.js';
 import Amplify, { Hub } from 'aws-amplify';
 import awsConfig from './awsExports.js';
-
-Amplify.configure(awsConfig);
-
 import { withAuthenticator } from 'aws-amplify-react-native';
 
 const TabNavigator = createBottomTabNavigator(
@@ -58,20 +53,14 @@ const TabNavigator = createBottomTabNavigator(
         }
       }
   });
-const MainNavigator = createSwitchNavigator({
-    Login: Login,
-    App: TabNavigator,
-    },
-    {
-        initialRouteName: 'Login'
-    }
-);
 
 const rootReducer = combineReducers({friends: friends, rewards: rewards});
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-const AppContainer = createAppContainer(TabNavigator    );
+const AppContainer = createAppContainer(TabNavigator);
+
+Amplify.configure(awsConfig);
 
 class App extends Component {
     

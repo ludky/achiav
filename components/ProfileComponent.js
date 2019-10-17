@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Button} from "react-native";
+import {SafeAreaView, View, Button} from "react-native";
 import Header from './HeaderComponent';
 import { Auth } from 'aws-amplify';
 
@@ -13,17 +13,19 @@ class Profile extends Component {
             .catch(err => console.log(err));
         }
         return (
-            <View>
+            <SafeAreaView style={{ flex: 1 }}>
                 <Header title='Profile'></Header>
-                <Button 
-                    color='orange' 
-                    title='Sign out'
-                    style={{padding: 10}}
-                    onPress={signOut}                
-                    >
-                </Button>    
-            </View>
-        )
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>                
+                    <Button 
+                        color='orange' 
+                        title='Sign out'
+                        style={{padding: 10}}
+                        onPress={signOut}                
+                        >
+                    </Button>  
+                </View>
+            </SafeAreaView>
+        )   
     }
 }
 

@@ -2,6 +2,10 @@ import getEnvVars from '../environment';
 import {RECEIVE_REWARDS, RECEIVE_FRIENDS} from "./ActionTypes";
 import { FRIENDS } from '../shared/friends';
 
+/**
+ * This class contains all Redux actions that occur as a result of  
+ */
+
 const { apiUrl } = getEnvVars();
 const { apiKey } = getEnvVars();
 
