@@ -22,10 +22,10 @@ export const FRIENDS = {
             id: '4',
             firstName: 'Hazel',
             lastName: 'Scheinbach',
-            imageUrl: '/Users/alecclifford/Documents/Development/achiav/assets/popcon.png'
+            imageUrl: '/Users/aleccliffordß/Documents/Development/achiav/assets/popcon.png'
         },
         {
-            id: '4',
+            id: '5',
             firstName: 'Ludy',
             lastName: 'Husky',
             imageUrl: '/Users/alecclifford/Documents/Development/achiav/assets/popcon.png'

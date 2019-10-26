@@ -1,5 +1,10 @@
 import * as ActionTypes from './ActionTypes';
 
+/**
+ *  Reducer function for managing the state of friends data in the Redux store.  This function takes in the current state and which actionw as performed
+ *  and then returns the new state of the Redux store.
+ */
+
 const initialState = {
     friends: []
 };

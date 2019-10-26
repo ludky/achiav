@@ -6,6 +6,12 @@ import { fetchRewards } from "../redux/ActionCreators";
 import Header from './HeaderComponent';
 
 
+
+/**
+ * Mapping function that maps dispatcher functions to this component's properties.  The property (which is a function) can then be called when
+ * necessary.
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => ({
     fetchRewards: () => dispatch(fetchRewards())
 });
@@ -49,6 +55,10 @@ class Rewards extends Component {
     }
 }
 
+/**
+ * Function that maps the state of rewards in Redux store to the properties of this component. 
+ * @param {*} state 
+ */
 const mapStateToProps = (state) => {
     return {
         rewards: state.rewards.rewards
