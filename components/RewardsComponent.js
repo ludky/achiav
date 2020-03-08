@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {FlatList, SafeAreaView} from 'react-native';
+import {FlatList, SafeAreaView, Alert} from 'react-native';
 import {ListItem} from "react-native-elements";
 import {connect} from "react-redux";
 import { fetchRewards } from "../redux/ActionCreators";
-import Header from './HeaderComponent';
+import GlobalHeader from './HeaderComponent';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 
 
@@ -42,9 +43,30 @@ class Rewards extends Component {
             )
         };
 
+        const renderGiftButton = () => {
+          return(
+          <Icon
+            name="gift"
+            backgroundColor="#3b5998"
+            onPress={giftReward}
+            color="#fff"
+          >
+            Gift
+          </Icon>
+        );
+      };
+
+      const giftReward = () => {
+        Alert.alert(
+          'Coming Soon!',
+          'Soon, you will be able to gift rewards to other users! Hang tight!',
+          {cancelable: false},
+        );
+      }
+
         return (
-            <SafeAreaView>
-                <Header title='Rewards'></Header>
+            <SafeAreaView>              
+                <GlobalHeader title='Rewards' rightComponent={renderGiftButton}></GlobalHeader>
                 <FlatList
                     data={this.props.rewards}
                     renderItem={renderRewardItem}

@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Text} from 'react-native';
+import { SafeAreaView, View, Text} from 'react-native';
+import {Header} from 'react-native-elements';
 
-class Header extends Component {
+class GlobalHeader extends Component {
+    
     constructor(props) {
         super(props);
     }
     render() {
+        const renderTitle = () => {
+            return(
+                <Text style={{color: "#fff"}} >
+                    {this.props.title}
+                </Text>
+            );
+        };
         return (
         <SafeAreaView>
-            <Text style={{fontSize: 18, padding: 10, textAlign: 'center', fontWeight: 'bold'}}>{ this.props.title }</Text>
+            <View>
+                <Header
+                    centerComponent={renderTitle}
+                    rightComponent={this.props.rightComponent}
+                    backgroundColor="#000"
+                />
+            </View>
         </SafeAreaView>
         )
     }
 }
 
-export default Header;
+export default GlobalHeader;

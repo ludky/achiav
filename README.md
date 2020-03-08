@@ -13,10 +13,11 @@ Achiav is built with React Native using the create-react-native-app tool.
 ## Important Libraries
 * react-native-navigation - used for React Native navigation UI elements
 * react-redux - centralized application state store
-* aws-amplify-react-native - AWS javascript library simplifying application integration with AWS cognito for user authentication.
+* aws-amplify-react-native - AWS javascript library simplifying application integration with AWS cognito for user authentication.  Provides login user flows and UI elements out of the box.
 
 ## Setup
 1. Install Expo
 2. Create `environment.js` file with the required environment variables
-3. run `yarn start`
-4. Copy the expo URL into your Expo phone app or simulator
+3. (iOS only) Link icons library to react-native `react-native link react-native-vector-icons`.  This is required because the library has native dependencies.
+4. run `yarn start`
+5. Copy the expo URL into your Expo phone app or simulator

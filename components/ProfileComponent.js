@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {SafeAreaView, View, Button} from "react-native";
-import Header from './HeaderComponent';
+import GlobalHeader from './HeaderComponent';
 import { Auth } from 'aws-amplify';
 
 class Profile extends Component {
@@ -14,7 +14,7 @@ class Profile extends Component {
         }
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <Header title='Profile'></Header>
+                <GlobalHeader title='Profile'></GlobalHeader>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>                
                     <Button 
                         color='orange' 
