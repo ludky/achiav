@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {View, FlatList} from "react-native";
-import GlobalHeader from './HeaderComponent';
+import GlobalHeader from '../../components/HeaderComponent';
 import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { fetchFriends } from '../redux/ActionCreators';
+import { fetchFriends } from '../../redux/ActionCreators';
 
 class Social extends Component {
 

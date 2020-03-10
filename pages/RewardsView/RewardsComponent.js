@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {FlatList, SafeAreaView, Alert} from 'react-native';
 import {ListItem} from "react-native-elements";
 import {connect} from "react-redux";
-import { fetchRewards } from "../redux/ActionCreators";
-import GlobalHeader from './HeaderComponent';
+import { fetchRewards } from "../../redux/ActionCreators";
+import GlobalHeader from '../../components/HeaderComponent';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 

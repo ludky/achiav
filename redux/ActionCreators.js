@@ -1,4 +1,4 @@
-import getEnvVars from '../environment';
+import getEnvVars from '../environment.js';
 import {RECEIVE_REWARDS, RECEIVE_FRIENDS} from "./ActionTypes";
 import { FRIENDS } from '../shared/friends';
 

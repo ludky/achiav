@@ -17,7 +17,7 @@ class GlobalHeader extends Component {
         };
         return (
         <SafeAreaView>
-            <View>
+            <View >
                 <Header
                     centerComponent={renderTitle}
                     rightComponent={this.props.rightComponent}

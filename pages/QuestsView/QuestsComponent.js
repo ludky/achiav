@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, Text} from "react-native";
-import GlobalHeader from './HeaderComponent';
+import GlobalHeader from '../../components/HeaderComponent';
 
 class Quests extends Component {
     render() {
