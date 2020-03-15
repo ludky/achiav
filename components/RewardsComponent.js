@@ -47,7 +47,6 @@ class Rewards extends Component {
           return(
           <Icon
             name="gift"
-            backgroundColor="#3b5998"
             onPress={giftReward}
             color="#fff"
           >
